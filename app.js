@@ -9,6 +9,13 @@ It initiates all required parts of server application such as Express, routes, d
 // Import database setup utilities
 const createDB = require('./database/utils/createDB');  // Import function to create database
 const seedDB = require('./database/utils/seedDB');  // Import function to seed database
+
+const { Sequelize } = require('sequelize');
+const sequelize = new Sequelize(process.env.DATABASE_URL, {
+  dialect: 'postgres',
+  protocol: 'postgres',
+  logging: false, // Optional: Disable logging
+});
 // Import database instance for database connection (including database name, username, and password)
 const db = require('./database');
 
